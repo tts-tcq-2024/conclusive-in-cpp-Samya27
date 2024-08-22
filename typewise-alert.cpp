@@ -1,5 +1,6 @@
 #include "typewise-alert.h"
-#include <cstdio> 
+#include <cstdio> // For printf
+#include <unordered_map> // For std::unordered_map
 #include <stdio.h>
 
 void checkAndAlert(
@@ -26,24 +27,19 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
     const char* recipient = "a.b@c.com";
-    const char* message = nullptr;
 
-    // Determine the message based on the breachType
-    switch (breachType) {
-        case TOO_LOW:
-            message = "Hi, the temperature is too low";
-            break;
-        case TOO_HIGH:
-            message = "Hi, the temperature is too high";
-            break;
-        default:
-            // Do nothing or handle unexpected BreachType if necessary
-            return;
-    }
+    // Map BreachType to messages
+    static const std::unordered_map<BreachType, const char*> messages = {
+        {TOO_LOW, "Hi, the temperature is too low"},
+        {TOO_HIGH, "Hi, the temperature is too high"}
+    };
 
-    // Send the email if a message was set
-    if (message) {
+    // Find the message for the given breachType
+    auto it = messages.find(breachType);
+    if (it != messages.end()) {
+        // Print the email content if a message was found
         printf("To: %s\n", recipient);
-        printf("%s\n", message);
+        printf("%s\n", it->second);
     }
+    // If breachType is NORMAL or not found, do nothing
 }
