@@ -29,7 +29,7 @@ void sendToEmail(BreachType breachType) {
     static const char* recipient = "a.b@c.com";
 
     // Map BreachType to messages
-    static const std::unordered_map<BreachType, const char*> messages = {
+    std::unordered_map<BreachType, const char*> messages = {
         {TOO_LOW, "Hi, the temperature is too low"},
         {TOO_HIGH, "Hi, the temperature is too high"}
         // NORMAL and any other unexpected values will not have a message
