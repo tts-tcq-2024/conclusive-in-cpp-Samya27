@@ -1,19 +1,6 @@
 #pragma once
 #include "Identify_Temp_Breach.h"
 
-typedef enum {
-  PASSIVE_COOLING,
-  HI_ACTIVE_COOLING,
-  MED_ACTIVE_COOLING
-} CoolingType;
-
-typedef enum {
-  NORMAL,
-  TOO_LOW,
-  TOO_HIGH
-} BreachType;
-
-BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 
 typedef enum {
   TO_CONTROLLER,
