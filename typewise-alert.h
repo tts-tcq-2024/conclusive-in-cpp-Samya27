@@ -3,12 +3,6 @@
 #pragma once
 
 typedef enum {
-  PASSIVE_COOLING,
-  HI_ACTIVE_COOLING,
-  MED_ACTIVE_COOLING
-} CoolingType;
-
-typedef enum {
   TO_CONTROLLER,
   TO_EMAIL
 } AlertTarget;
