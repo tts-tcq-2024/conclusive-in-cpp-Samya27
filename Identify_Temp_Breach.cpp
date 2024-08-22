@@ -11,16 +11,6 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-class BreachType {
-    // Assume this class is already defined
-}
-
-enum CoolingType {
-    PASSIVE_COOLING,
-    HI_ACTIVE_COOLING,
-    MED_ACTIVE_COOLING;
-}
-
 class TemperatureLimits {
     int lowerLimit;
     int upperLimit;
