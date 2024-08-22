@@ -41,6 +41,6 @@ void sendToEmail(BreachType breachType) {
     // Print the email content if a message was found
     if (messages.find(breachType) != messages.end()) {
         printf("To: %s\n", recipient);
-        printf("%s\n", messages[breachType];
+        printf("%s\n", messages[breachType]);
     }
 }
