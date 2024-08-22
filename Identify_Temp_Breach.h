@@ -1,5 +1,10 @@
 #include <stdio.h>
-#include "typewise-alert.h"
+
+typedef enum {
+  PASSIVE_COOLING,
+  HI_ACTIVE_COOLING,
+  MED_ACTIVE_COOLING
+} CoolingType;
 
 typedef enum {
   NORMAL,
