@@ -1,4 +1,5 @@
 #pragma once
+#include "Identify_Temp_Breach.h"
 
 typedef enum {
   PASSIVE_COOLING,
