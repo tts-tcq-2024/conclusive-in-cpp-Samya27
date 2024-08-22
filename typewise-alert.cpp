@@ -26,7 +26,7 @@ void sendToController(BreachType breachType) {
 }
 
 void sendToEmail(BreachType breachType) {
-    static const char* recipient = "a.b@c.com";
+    const char* recipient = "a.b@c.com";
 
     // Map BreachType to messages
     std::unordered_map<BreachType, const char*> messages = {
