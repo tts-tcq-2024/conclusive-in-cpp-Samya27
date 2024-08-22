@@ -36,10 +36,10 @@ void sendToEmail(BreachType breachType) {
     };
 
     // Find the message for the given breachType
-    auto it = messages.find(breachType);
+    //auto it = messages.find(breachType);
 
     // Print the email content if a message was found
-    if (it != messages.end()) {
+    if (messages.find(breachType) != messages.end()) {
         printf("To: %s\n", recipient);
         printf("%s\n", it->second);
     }
