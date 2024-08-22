@@ -11,15 +11,14 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-class TemperatureLimits {
+struct TemperatureLimits {
     int lowerLimit;
     int upperLimit;
 
-    TemperatureLimits(int lowerLimit, int upperLimit) {
-        this.lowerLimit = lowerLimit;
-        this.upperLimit = upperLimit;
+    TemperatureLimits(int lower, int upper) : lowerLimit(lower), upperLimit(upper) {
+        // Constructor initialization list used to set the values of lowerLimit and upperLimit
     }
-}
+};
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
     Map<CoolingType, TemperatureLimits> coolingLimits = new HashMap<>();
