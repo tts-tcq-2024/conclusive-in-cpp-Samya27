@@ -15,18 +15,24 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 struct TemperatureLimits {
     int lowerLimit;
     int upperLimit;
-
-    TemperatureLimits(int lower, int upper) : lowerLimit(lower), upperLimit(upper) {
-        // Constructor initialization list used to set the values of lowerLimit and upperLimit
-    }
 };
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
-    std::map::Map<CoolingType, TemperatureLimits> coolingLimits = new HashMap<>();
-    coolingLimits.put(CoolingType.PASSIVE_COOLING, new TemperatureLimits(0, 35));
-    coolingLimits.put(CoolingType.HI_ACTIVE_COOLING, new TemperatureLimits(0, 45));
-    coolingLimits.put(CoolingType.MED_ACTIVE_COOLING, new TemperatureLimits(0, 40));
+    // Define a map to store temperature limits for each cooling type
+    static const std::map<CoolingType, TemperatureLimits> coolingLimits = {
+        {PASSIVE_COOLING, {0, 35}},
+        {HI_ACTIVE_COOLING, {0, 45}},
+        {MED_ACTIVE_COOLING, {0, 40}}
+    };
 
-    TemperatureLimits limits = coolingLimits.get(coolingType);
-    return inferBreach(temperatureInC, limits.lowerLimit, limits.upperLimit);
+    // Find the temperature limits for the given cooling type
+    auto it = coolingLimits.find(coolingType);
+    if (it != coolingLimits.end()) {
+        const TemperatureLimits& limits = it->second;
+        return inferBreach(temperatureInC, limits.lowerLimit, limits.upperLimit);
+    } else {
+        // Handle the case where the coolingType is not found (if necessary)
+        // For now, let's assume it will never reach here
+        return BreachType(); // Or some default BreachType
+    }
 }
