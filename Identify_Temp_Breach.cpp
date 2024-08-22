@@ -21,12 +21,6 @@ class TemperatureLimits {
     }
 }
 
-BreachType inferBreach(double temperatureInC, int lowerLimit, int upperLimit) {
-    // Assume this function is already defined
-    // Example: return BreachType.TOO_HIGH if temperatureInC > upperLimit, etc.
-    return new BreachType();
-}
-
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
     Map<CoolingType, TemperatureLimits> coolingLimits = new HashMap<>();
     coolingLimits.put(CoolingType.PASSIVE_COOLING, new TemperatureLimits(0, 35));
