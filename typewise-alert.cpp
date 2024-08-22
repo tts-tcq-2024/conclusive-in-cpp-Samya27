@@ -1,5 +1,5 @@
 #include "typewise-alert.h"
-//#include "Identify_Temp_Breach.h"
+#include <cstdio> 
 #include <stdio.h>
 
 void checkAndAlert(
@@ -25,17 +25,25 @@ void sendToController(BreachType breachType) {
 }
 
 void sendToEmail(BreachType breachType) {
-    const char* recepient = "a.b@c.com";
-    if(breachType=TOO_LOW) {
-        printf("To: %s\n", recepient);
-        printf("Hi, the temperature is too low\n");
+    const char* recipient = "a.b@c.com";
+    const char* message = nullptr;
+
+    // Determine the message based on the breachType
+    switch (breachType) {
+        case TOO_LOW:
+            message = "Hi, the temperature is too low";
+            break;
+        case TOO_HIGH:
+            message = "Hi, the temperature is too high";
+            break;
+        default:
+            // Do nothing or handle unexpected BreachType if necessary
+            return;
     }
-    elseif(breachType = TOO_HIGH){
-        printf("To: %s\n", recepient);
-        printf("Hi, the temperature is too high\n");
+
+    // Send the email if a message was set
+    if (message) {
+        printf("To: %s\n", recipient);
+        printf("%s\n", message);
     }
-    else{
-        //do nothing
-    }
-  }
 }
