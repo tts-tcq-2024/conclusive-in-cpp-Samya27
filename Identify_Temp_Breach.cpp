@@ -21,7 +21,7 @@ struct TemperatureLimits {
 };
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
-    Map<CoolingType, TemperatureLimits> coolingLimits = new HashMap<>();
+    std::map::Map<CoolingType, TemperatureLimits> coolingLimits = new HashMap<>();
     coolingLimits.put(CoolingType.PASSIVE_COOLING, new TemperatureLimits(0, 35));
     coolingLimits.put(CoolingType.HI_ACTIVE_COOLING, new TemperatureLimits(0, 45));
     coolingLimits.put(CoolingType.MED_ACTIVE_COOLING, new TemperatureLimits(0, 40));
