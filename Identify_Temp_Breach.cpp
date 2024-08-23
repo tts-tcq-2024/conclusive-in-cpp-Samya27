@@ -30,9 +30,5 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
     if (it != coolingLimits.end()) {
         const TemperatureLimits& limits = it->second;
         return inferBreach(temperatureInC, limits.lowerLimit, limits.upperLimit);
-    } else {
-        // Handle the case where the coolingType is not found (if necessary)
-        // For now, let's assume it will never reach here
-        return BreachType(); // Or some default BreachType
-    }
+    }s
 }
