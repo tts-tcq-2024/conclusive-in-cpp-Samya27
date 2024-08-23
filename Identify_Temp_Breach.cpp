@@ -24,11 +24,10 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
         {HI_ACTIVE_COOLING, {0, 45}},
         {MED_ACTIVE_COOLING, {0, 40}}
     };
-
     // Find the temperature limits for the given cooling type
     auto it = coolingLimits.find(coolingType);
     if (it != coolingLimits.end()) {
         const TemperatureLimits& limits = it->second;
         return inferBreach(temperatureInC, limits.lowerLimit, limits.upperLimit);
-    }s
+    }
 }
