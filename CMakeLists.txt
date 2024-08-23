@@ -20,6 +20,7 @@ add_executable(
   cleancode
   typewise-alert.cpp
   typewise-alert.tests.cpp
+  Identify_Temp_Breach.cpp
 )
 target_link_libraries(
   cleancode

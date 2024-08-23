@@ -1,36 +1,7 @@
 #include "typewise-alert.h"
+#include <cstdio> 
 #include <stdio.h>
-
-BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-  if(value < lowerLimit) {
-    return TOO_LOW;
-  }
-  if(value > upperLimit) {
-    return TOO_HIGH;
-  }
-  return NORMAL;
-}
-
-BreachType classifyTemperatureBreach(
-    CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
-  switch(coolingType) {
-    case PASSIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 35;
-      break;
-    case HI_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 45;
-      break;
-    case MED_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 40;
-      break;
-  }
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
-}
+#include <unordered_map>
 
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
@@ -55,17 +26,21 @@ void sendToController(BreachType breachType) {
 }
 
 void sendToEmail(BreachType breachType) {
-  const char* recepient = "a.b@c.com";
-  switch(breachType) {
-    case TOO_LOW:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
-      break;
-    case TOO_HIGH:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
-      break;
-    case NORMAL:
-      break;
-  }
+    const char* recipient = "a.b@c.com";
+
+    // Map BreachType to messages
+    std::unordered_map<BreachType, const char*> messages = {
+        {TOO_LOW, "Hi, the temperature is too low"},
+        {TOO_HIGH, "Hi, the temperature is too high"}
+        // NORMAL and any other unexpected values will not have a message
+    };
+
+    // Find the message for the given breachType
+    //auto it = messages.find(breachType);
+
+    // Print the email content if a message was found
+    if (messages.find(breachType) != messages.end()) {
+        printf("To: %s\n", recipient);
+        printf("%s\n", messages[breachType]);
+    }
 }
