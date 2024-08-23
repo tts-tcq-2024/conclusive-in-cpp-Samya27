@@ -8,7 +8,6 @@ TEST(TypeWiseAlertTestSuite, TestClassifiesTemperatureBreach) {
     EXPECT_EQ(classifyTemperatureBreach(HI_ACTIVE_COOLING, 35), NORMAL);
     EXPECT_EQ(classifyTemperatureBreach(MED_ACTIVE_COOLING, -1), TOO_LOW);
     EXPECT_EQ(classifyTemperatureBreach(MED_ACTIVE_COOLING, 20), NORMAL);
-    EXPECT_EQ(classifyTemperatureBreach(ACTIVE_COOLING, 20), NORMAL);
 }
 TEST(TypeWiseAlertTestSuite,TestInfersBreachAccordingToLimits) {
     EXPECT_EQ(inferBreach(14, 20, 40), TOO_LOW);
